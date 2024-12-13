@@ -1,0 +1,22 @@
+.welcome-section {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.welcome-section h1 {
+  font-size: 1.8rem;
+  color: var(--ion-color-primary);
+}
+
+.welcome-section p {
+  font-size: 1rem;
+  color: var(--ion-color-medium);
+}
+
+.actions-section {
+  margin-top: 30px;
+}
+
+ion-button {
+  margin: 10px 0;
+}

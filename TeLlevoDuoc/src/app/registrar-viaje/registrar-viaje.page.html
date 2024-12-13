@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrar Viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="submitForm()" #tripForm="ngForm">
+    <!-- Nombre Completo -->
+    <ion-item>
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-label position="stacked">Nombre Completo</ion-label>
+      <ion-input
+        type="text"
+        placeholder="Ej. Juan Pérez"
+        [(ngModel)]="newTrip.driverName"
+        name="driverName"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <!-- Número de WhatsApp -->
+    <ion-item>
+      <ion-icon name="logo-whatsapp" slot="start"></ion-icon>
+      <ion-label position="stacked">Número de WhatsApp</ion-label>
+      <ion-input
+        type="tel"
+        placeholder="Ej. +56912345678"
+        [(ngModel)]="newTrip.whatsappNumber"
+        name="whatsappNumber"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <!-- Lugar de Encuentro -->
+    <ion-item>
+      <ion-icon name="location" slot="start"></ion-icon>
+      <ion-label position="stacked">Lugar de Encuentro</ion-label>
+      <ion-input
+        type="text"
+        placeholder="Busca un lugar..."
+        [(ngModel)]="newTrip.pickupLocation"
+        (input)="fetchPickupSuggestions($event)"
+        name="pickupLocation"
+        required
+      ></ion-input>
+    </ion-item>
+    
+    <!-- Spinner de carga -->
+    <ion-spinner *ngIf="isLoadingPickup" name="crescent"></ion-spinner>
+    
+    <!-- Lista de sugerencias -->
+    <ion-list *ngIf="pickupSuggestions.length > 0 && !isLoadingPickup">
+      <ion-item
+        *ngFor="let suggestion of pickupSuggestions"
+        (click)="selectPickupSuggestion(suggestion)"
+      >
+        {{ suggestion.display_name }}
+      </ion-item>
+    </ion-list>
+    
+
+    <!-- Destino Final -->
+    <ion-item>
+      <ion-icon name="navigate" slot="start"></ion-icon>
+      <ion-label position="stacked">Destino Final</ion-label>
+      <ion-input
+        type="text"
+        placeholder="Busca un destino..."
+        [(ngModel)]="newTrip.destination"
+        (input)="fetchDestinationSuggestions($event)"
+        name="destination"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-list *ngIf="destinationSuggestions.length > 0">
+      <ion-item
+        *ngFor="let suggestion of destinationSuggestions"
+        (click)="selectDestinationSuggestion(suggestion)"
+      >
+        {{ suggestion.display_name }}
+      </ion-item>
+    </ion-list>
+
+    <!-- Fecha y Hora de Salida -->
+    <ion-item>
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-label position="stacked">Fecha y Hora de Salida</ion-label>
+      <ion-datetime
+        [(ngModel)]="newTrip.departureDateTime"
+        name="departureDateTime"
+        required
+      ></ion-datetime>
+    </ion-item>
+
+    <!-- Capacidad de Pasajeros -->
+    <ion-item>
+      <ion-icon name="people" slot="start"></ion-icon>
+      <ion-label position="stacked">Capacidad de Pasajeros</ion-label>
+      <ion-input
+        type="number"
+        placeholder="Ej. 4"
+        [(ngModel)]="newTrip.capacity"
+        name="capacity"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <!-- Costo por Pasajero -->
+    <ion-item>
+      <ion-icon name="cash" slot="start"></ion-icon>
+      <ion-label position="stacked">Costo por Pasajero</ion-label>
+      <ion-input
+        type="number"
+        placeholder="Ej. 3000"
+        [(ngModel)]="newTrip.costPerPassenger"
+        name="costPerPassenger"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <!-- Botón para registrar -->
+    <ion-button
+      expand="block"
+      type="submit"
+      [disabled]="!newTrip.pickupLocation || !newTrip.destination || !isFormValid()" 
+    >
+      Registrar Viaje
+    </ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,35 @@
+.no-active-trip,
+.no-history {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--ion-color-medium);
+    margin: 20px 0;
+}
+
+ion-card {
+    margin: 10px 0;
+    border: 1px solid var(--ion-color-light);
+    border-radius: 8px;
+}
+
+ion-card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+}
+
+ion-card-content p {
+    margin: 5px 0;
+}
+
+ion-button {
+    margin: 10px 0;
+}
+
+ion-item {
+    border-bottom: 1px solid var(--ion-color-light);
+}
+
+ion-item:last-child {
+    border-bottom: none;
+}

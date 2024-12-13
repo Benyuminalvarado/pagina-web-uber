@@ -1,0 +1,58 @@
+/* registrar-viaje.page.scss */
+
+/* Estilo del listado de sugerencias cargado desde la API */
+ion-list.api-suggestions {
+    margin-top: 0.5rem;
+    background: var(--ion-color-light);
+    border-radius: 8px;
+    overflow: hidden;
+
+    ion-item {
+        font-size: 14px;
+        color: var(--ion-color-dark); /* Texto oscuro por defecto */
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid var(--ion-color-medium);
+        transition:
+            background-color 0.3s ease,
+            color 0.3s ease;
+        cursor: pointer;
+    }
+
+    ion-item:last-child {
+        border-bottom: none; /* Eliminar borde del último elemento */
+    }
+
+    ion-item:hover {
+        background-color: var(--ion-color-primary-tint); /* Fondo al pasar el mouse */
+        color: var(--ion-color-dark); /* Asegurar contraste */
+    }
+}
+
+/* Ajustes para modo oscuro */
+@media (prefers-color-scheme: dark) {
+    ion-list.api-suggestions {
+        background: var(--ion-color-dark-shade);
+
+        ion-item {
+            color: var(--ion-color-light); /* Texto claro para modo oscuro */
+            border-bottom: 1px solid var(--ion-color-dark-tint);
+        }
+
+        ion-item:hover {
+            background-color: var(--ion-color-primary); /* Fondo al pasar el mouse */
+            color: var(--ion-color-light); /* Texto claro al pasar el mouse */
+        }
+    }
+}
+
+ion-content {
+    text-align: center;
+    font-size: 16px;
+}
+
+ion-spinner {
+    display: block;
+    margin: 10px auto;
+    color: var(--ion-color-primary);
+  }
+  

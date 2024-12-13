@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Buscar Viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">¿A dónde necesitas ir?</ion-label>
+    <ion-input
+      placeholder="Ingresa tu destino"
+      [(ngModel)]="searchQuery"
+      (keyup.enter)="searchLocation()"
+    ></ion-input>
+    <ion-button slot="end" aria-label="Buscar ubicación" (click)="searchLocation()">
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <div class="button-container">
+    <ion-button expand="block" color="danger" (click)="resetInput()">
+      <ion-icon name="trash-outline"></ion-icon> Limpiar
+    </ion-button>
+    <ion-button expand="block" color="secondary" (click)="getCurrentLocation()">
+      <ion-icon name="location-outline"></ion-icon> Mi Ubicación
+    </ion-button>
+  </div>
+  
+  <div id="map" class="map-container"></div>
+
+  <div class="map-legend">
+    <div>
+      <div class="legend-icon" style="background-color: green;"></div>
+      <span>Mi Ubicación</span>
+    </div>
+    <div>
+      <div class="legend-icon" style="background-color: blue;"></div>
+      <span>Lugar de Encuentro</span>
+    </div>
+    <div>
+      <div class="legend-icon" style="background-color: red;"></div>
+      <span>Destino Final</span>
+    </div>
+  </div>
+
+  <ion-list>
+    <ion-card
+      *ngFor="let trip of filteredTrips$ | async; let i = index"
+      [id]="'trip-' + i"
+      [class.highlighted]="trip === selectedTrip"
+      [class.disabled]="trip.capacity === 0"
+    >
+      <ion-card-header>
+        <ion-card-title>{{ trip.destination }}</ion-card-title>
+        <ion-card-subtitle>
+          Chofer: {{ trip.driverName }}
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>WhatsApp:</strong> {{ trip.whatsappNumber }}</p>
+        <p><strong>Lugar de Encuentro:</strong> {{ trip.pickupLocation }}</p>
+        <p><strong>Capacidad Disponible:</strong> 
+          {{ trip.capacity > 0 ? trip.capacity : 'Completo' }}
+        </p>
+        <p><strong>Ranking:</strong> ★★★★★ (4.5)</p>
+        <p>Fecha: {{ trip.departureDateTime | date: 'short' }}</p>
+        <p>Costo: {{ trip.costPerPassenger | currency: 'CLP' }}</p>
+        <ion-button
+          expand="block"
+          color="primary"
+          [disabled]="trip.capacity === 0"
+          (click)="openConfirmationModal(trip)"
+        >
+          Confirmar
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-list *ngIf="(filteredTrips$ | async)?.length === 0">
+    <ion-item>
+      <ion-label>No hay viajes disponibles para mostrar.</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

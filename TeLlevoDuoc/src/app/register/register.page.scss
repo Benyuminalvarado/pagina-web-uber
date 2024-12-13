@@ -1,0 +1,37 @@
+ion-content.centered-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Asegura la altura completa */
+  }
+  
+  .register-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  ion-item.input-item {
+    position: relative;
+  }
+  
+  .input-icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: var(--ion-color-medium); /* Color inicial */
+  }
+  
+  ion-input:focus + .input-icon,
+  ion-input:not(:placeholder-shown) + .input-icon {
+    transform: translateY(-10px); /* Mueve el ícono hacia arriba */
+    color: var(--ion-color-primary); /* Cambia el color */
+  }
+  
+  ion-input {
+    padding-left: 35px; /* Espacio para el ícono */
+  }
+  
+  ion-button {
+    margin-top: 15px;
+  }
+  

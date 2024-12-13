@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis Viajes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Viaje Activo -->
+  <ion-card *ngIf="activeTrip">
+    <ion-card-header>
+      <ion-card-title>Mi Viaje Activo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><b>Destino:</b> {{ activeTrip.destination }}</p>
+      <p><b>Lugar de Encuentro:</b> {{ activeTrip.pickupLocation }}</p>
+      <p><b>Fecha:</b> {{ activeTrip.departureDateTime | date: 'short' }}</p>
+      <p><b>Costo:</b> {{ activeTrip.costPerPassenger | currency }}</p>
+      <p><b>Conductor:</b> {{ activeTrip.driverName }}</p>
+      <p><b>Número de WhatsApp:</b> {{ activeTrip.whatsappNumber }}</p>
+
+      <!-- Botones para acciones -->
+      <ion-button
+        color="success"
+        expand="block"
+        (click)="completeActiveTrip()"
+        [disabled]="activeTrip?.rating"
+      >
+        {{ activeTrip?.rating ? 'Completado' : 'Marcar como Completado' }}
+      </ion-button>
+
+      <ion-button
+        color="secondary"
+        expand="block"
+        (click)="sendWhatsApp(activeTrip.whatsappNumber)"
+      >
+        <ion-icon name="logo-whatsapp"></ion-icon> Contactar al Conductor
+      </ion-button>
+      <ion-button color="danger" expand="block" (click)="cancelActiveTrip()">
+        Cancelar Viaje
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Mensaje cuando no hay viaje activo -->
+  <p *ngIf="!activeTrip" class="no-active-trip">
+    No tienes viajes activos en este momento.
+  </p>
+
+  <!-- Historial de Viajes -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Historial de Viajes</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let trip of tripHistory">
+          <ion-label>
+            <h2>{{ trip.destination }}</h2>
+            <p><b>Conductor:</b> {{ trip.driverName }}</p>
+            <p><b>Lugar de Encuentro:</b> {{ trip.pickupLocation }}</p>
+            <p><b>Fecha:</b> {{ trip.departureDateTime | date: 'short' }}</p>
+            <p><b>Costo:</b> {{ trip.costPerPassenger | currency }}</p>
+            <p><b>Calificación:</b> ★★★★★ ({{ trip.rating || 'No calificado' }})</p>
+          </ion-label>
+          <ion-button
+            color="danger"
+            slot="end"
+            fill="clear"
+            (click)="deleteTripFromHistory(trip)"
+            aria-label="Eliminar viaje del historial"
+          >
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+  
+      <!-- Mensaje cuando no hay historial -->
+      <p *ngIf="tripHistory.length === 0" class="no-history">
+        No tienes viajes realizados en el historial.
+      </p>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

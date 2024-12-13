@@ -1,0 +1,101 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Configuración para el tema claro (predeterminado) */
+:root {
+    --ion-color-primary: #132caa; /* Azul */
+    --ion-color-primary-contrast: #ffffff; /* Texto blanco en botones primary */
+
+    --ion-color-secondary: #f1b634; /* Amarillo */
+    --ion-color-secondary-contrast: #ffffff; /* Texto blanco en botones secondary */
+
+    --ion-color-success: #28a745; /* Verde */
+    --ion-color-success-contrast: #ffffff; /* Texto blanco en botones success */
+
+    --ion-color-danger: #dc3545; /* Rojo */
+    --ion-color-danger-contrast: #ffffff; /* Texto blanco en botones danger */
+
+    --ion-color-warning: #ffc107; /* Naranja */
+    --ion-color-warning-contrast: #ffffff; /* Texto blanco en botones warning */
+
+    --ion-color-light: #ffffff; /* Blanco */
+    --ion-color-light-contrast: #000000; /* Texto negro en botones light */
+
+    --ion-color-dark: #343a40; /* Gris oscuro */
+    --ion-color-dark-contrast: #ffffff; /* Texto blanco en botones dark */
+}
+
+/* Configuración para el modo oscuro */
+.ion-palette-dark {
+    --ion-color-primary: #f1b634; /* Amarillo para botones primary */
+    --ion-color-primary-contrast: #000000; /* Texto negro en botones primary */
+
+    --ion-color-secondary: #132caa; /* Azul para botones secondary */
+    --ion-color-secondary-contrast: #ffffff; /* Texto blanco en botones secondary */
+
+    /* Success */
+    --ion-color-success: #4caf50; /* Verde brillante */
+    --ion-color-success-contrast: #ffffff; /* Texto blanco en botones success */
+
+    /* Danger */
+    --ion-color-danger: #ff5c5c; /* Rojo brillante */
+    --ion-color-danger-contrast: #ffffff; /* Texto blanco en botones danger */
+
+    /* Warning */
+    --ion-color-warning: #ffc107; /* Amarillo brillante */
+    --ion-color-warning-contrast: #000000; /* Texto negro en botones warning */
+
+    /* Light */
+    --ion-color-light: #1e1e1e; /* Gris oscuro para botones light */
+    --ion-color-light-contrast: #ffffff; /* Texto blanco en botones light */
+
+    /* Dark */
+    --ion-color-dark: #000000; /* Fondo negro */
+    --ion-color-dark-contrast: #f1b634; /* Texto amarillo en botones dark */
+}
+
+.ion-palette-dark ion-button:hover {
+    filter: brightness(1.2); /* Aumenta el brillo en hover */
+    --background: var(--ion-color-primary); /* Asegura que el hover respete el color */
+}
+
+ion-button {
+    border-radius: 8px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    padding: 10px 15px; /* Espaciado */
+}
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+@import "@ionic/angular/css/palettes/dark.class.css";
+// @import "@ionic/angular/css/palettes/dark.system.css";

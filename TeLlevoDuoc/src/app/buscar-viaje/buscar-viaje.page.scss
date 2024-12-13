@@ -1,0 +1,124 @@
+ion-button[slot="end"] {
+    margin-left: 10px;
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+    &:active {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+
+    ion-button {
+        width: 45%;
+    }
+}
+
+/* Text Centering */
+ion-text {
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+/* Map Container */
+.map-container {
+    width: 100%;
+    height: calc(100vh - 200px); /* Ajusta según el diseño */
+    position: relative;
+    border: 1px solid var(--ion-color-medium); /* Mejora la consistencia del tema */
+    border-radius: 8px; /* Opcional: para bordes suaves */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .map-container {
+        height: calc(100vh - 150px); /* Reducir tamaño en pantallas pequeñas */
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    ion-button {
+        width: 100%;
+    }
+}
+
+/* Map Legend */
+.map-legend {
+    position: absolute; /* Asegura que esté superpuesto al mapa */
+    bottom: 10px; /* Espaciado desde la parte inferior */
+    left: 10px; /* Espaciado desde la parte izquierda */
+    background-color: white; /* Fondo acorde al tema */
+    color: var(--ion-color-dark); /* Texto acorde al tema */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+    font-size: 14px;
+    z-index: 1000; /* Asegura que esté siempre encima del mapa */
+}
+
+.map-legend div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+
+    .legend-icon {
+        width: 15px;
+        height: 15px;
+        margin-right: 10px;
+        border-radius: 50%;
+    }
+}
+
+ion-card {
+    margin: 10px;
+    transition:
+        box-shadow 0.3s ease,
+        transform 0.2s ease;
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transform: scale(1.01); /* Efecto sutil al pasar el cursor */
+    }
+}
+
+ion-card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+ion-card-content {
+    font-size: 0.9rem;
+}
+
+ion-card.highlighted {
+    border: 2px solid var(--ion-color-primary);
+    border-radius: 8px;
+    transition: border 0.3s ease;
+}
+
+ion-card.disabled {
+    opacity: 0.6;
+    pointer-events: none; /* Desactiva la interacción */
+}
+
+ion-card.disabled ion-card-title,
+ion-card.disabled ion-card-content {
+    text-decoration: line-through; /* Marca como no disponible */
+}
+
+ion-card.disabled ion-button {
+    background-color: var(--ion-color-medium); /* Color gris para indicar bloqueo */
+    cursor: not-allowed; /* Cambia el cursor */
+}

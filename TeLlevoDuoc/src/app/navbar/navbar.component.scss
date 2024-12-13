@@ -1,0 +1,30 @@
+ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-light);
+}
+
+ion-title {
+    font-weight: bold;
+    text-align: center;
+}
+
+ion-toggle {
+    margin-right: 10px;
+}
+
+ion-menu {
+    --width: 280px; /* Ancho del menú lateral */
+}
+
+ion-list-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px;
+}
+
+ion-button {
+    color: var(--ion-color-light); /* Asegúrate de usar un color contrastante */
+}
+ion-icon {
+    font-size: 24px;
+}
