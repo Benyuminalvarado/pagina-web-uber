@@ -55,7 +55,7 @@ Permite registrar, buscar, y gestionar viajes, además de funcionalidades como r
 #### **Instalación**
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/tu_usuario/te-llevo-duoc.git
+   https://github.com/Benyuminalvarado/pagina-web-uber.git
    cd te-llevo-duoc
    ```
 
